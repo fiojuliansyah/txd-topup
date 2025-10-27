@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cek Transaksi - Top-Up Game & PPOB | 8-Bit Mode</title>
+    <title>Cek Transaksi - TXD Top Up | 8-Bit Mode</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
@@ -89,7 +89,7 @@
 
 <body class="bg-gray-100 text-gray-900 font-sans antialiased">
 
-    <header class="bg-white text-gray-600 py-2 text-sm hidden md:block border-b border-gray-900">
+    <header class="bg-white text-gray-600 py-2 text-sm hidden md:block border-b border-gray-200">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a href="mailto:info@website.com"
@@ -98,7 +98,7 @@
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                     </svg>
-                    info@website.com
+                    info@toxidotopup.com
                 </a>
                 <a href="tel:081234567890"
                     class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
@@ -111,47 +111,42 @@
                 </a>
             </div>
             <div class="flex items-center space-x-4">
-                <a href="#"
-                    class="btn-8bit px-4 py-2 text-primary-bit font-pixel text-xs rounded-full bg-white hover:bg-gray-200 transition-all duration-300 !shadow-none">Login</a>
-                <a href="#"
+                <a href="login.html"
+                    class="btn-8bit px-4 py-2 text-primary-bit font-pixel text-xs rounded-full hover:bg-gray-200 transition-all duration-300">Login</a>
+                <a href="register.html"
                     class="btn-8bit px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
             </div>
         </div>
     </header>
 
     <nav id="main-header"
-        class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-900">
+        class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-300">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" class="text-3xl font-pixel text-primary-bit tracking-wider">
                 <img src="image/logo.png" alt="" width="100">
             </a>
             <div class="flex items-center space-x-8">
-                <a href="#"
+                <a href="index.html"
                     class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
                     Top-up
                     <span
                         class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
-                <a href="#"
-                    class="relative nav-link active-8bit font-pixel text-xs transition-colors duration-300">
+                <a href="transaction-check.html"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
                     Transaksi
-                    <span class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit"></span>
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
-                <a href="#"
+                <a href="leaderboard.html"
                     class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
                     Leaderboard
                     <span
                         class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
-                <a href="#"
+                <a href="blog.html"
                     class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
                     Blog
-                    <span
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-                </a>
-                <a href="#"
-                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
-                    Kontak
                     <span
                         class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
@@ -261,7 +256,9 @@
     <div id="mobile-sidebar-menu"
         class="fixed top-0 left-0 h-full w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden border-r-4 border-gray-900">
         <div class="flex justify-between items-center p-6 border-b-2 border-gray-900">
-            <a href="#" class="text-2xl font-pixel text-primary-bit">TOPUP.ID</a>
+            <a href="#" class="text-3xl font-pixel text-primary-bit tracking-wider">
+                <img src="image/logo.png" alt="" width="100">
+            </a>
             <button id="close-sidebar-button" class="text-gray-700 hover:text-primary-bit transition-colors">
                 <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd"
@@ -271,28 +268,26 @@
             </button>
         </div>
         <nav class="flex flex-col p-6 space-y-2">
-            <a href="#"
+            <a href="index.html"
                 class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Top-up</a>
-            <a href="#"
+            <a href="transaction-check.html"
                 class="block px-4 py-3 rounded-lg text-primary-bit font-pixel text-xs bg-gray-200 transition-colors border-2 border-primary-bit">Transaksi</a>
-            <a href="#"
+            <a href="leaderboard.html"
                 class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Leaderboard</a>
-            <a href="#"
+            <a href="blog.html"
                 class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Blog</a>
-            <a href="#"
-                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Kontak</a>
         </nav>
         <div class="mt-8 px-6 flex flex-col space-y-4">
-            <a href="#"
+            <a href="login.html"
                 class="btn-8bit px-4 py-2 text-primary-bit text-center font-pixel text-xs rounded-full bg-white hover:bg-primary-bit/20 transition-all duration-300 !shadow-none">Login</a>
-            <a href="#"
+            <a href="register.html"
                 class="btn-8bit px-4 py-2 text-center bg-primary-bit text-white font-pixel text-xs rounded-full shadow-primary-bit hover:bg-opacity-90 transition-all duration-300">Daftar</a>
         </div>
     </div>
 
     <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-900 shadow-xl md:hidden z-50">
         <nav class="flex justify-around items-center h-16 text-gray-700">
-            <a href="#"
+            <a href="index.html"
                 class="flex flex-col items-center justify-center p-2 hover:text-primary-bit transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -310,7 +305,7 @@
                 </svg>
                 <span class="text-xs font-pixel">Produk</span>
             </a>
-            <a href="#"
+            <a href="transaction-check.html"
                 class="flex flex-col items-center justify-center p-2 text-primary-bit transition-colors">
                 <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -334,7 +329,7 @@
     <footer class="bg-white text-gray-700 py-12 mt-12 border-t border-gray-900 hidden md:block">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-                <h3 class="font-pixel text-sm text-primary-bit mb-4">TOPUP.ID</h3>
+                <h3 class="font-pixel text-sm text-primary-bit mb-4">TXD TOPUP</h3>
                 <p class="text-sm">Platform top-up game dan layanan PPOB terbaik, cepat, dan terpercaya.</p>
             </div>
             <div>
@@ -371,7 +366,7 @@
             </div>
         </div>
         <div class="mt-8 border-t border-gray-900 pt-6 text-center text-xs text-gray-500 font-pixel">
-            © 2025 Top-Up Game & PPOB. ALL RIGHTS RESERVED.
+            © 2025 TXD Top Up. ALL RIGHTS RESERVED.
         </div>
     </footer>
 
