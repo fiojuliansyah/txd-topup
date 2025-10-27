@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Joki Rank MLBB - Top-Up Game & PPOB | 8-Bit Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        /* Konfigurasi warna baru */
+        @layer utilities {
+            .text-primary-bit {
+                color: #01a8f7;
+            }
+            .bg-primary-bit {
+                background-color: #01a8f7;
+            }
+            .hover-bg-primary-bit:hover {
+                background-color: #01a8f7;
+            }
+            .ring-primary-bit:focus {
+                --tw-ring-color: #01a8f7;
+            }
+            .text-secondary-bit {
+                color: #e5b701;
+            }
+            .bg-secondary-bit {
+                background-color: #e5b701;
+            }
+            .shadow-primary-bit {
+                --tw-shadow-color: #01a8f7;
+                --tw-shadow: var(--tw-shadow-color) 0px 8px 24px -8px;
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            }
+        }
+
+        /* Font 8-Bit */
+        .font-pixel {
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        /* 8-Bit Button Style */
+        .btn-8bit {
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0 0 #000;
+            transition: all 0.1s;
+        }
+        .btn-8bit:active {
+            box-shadow: 0px 0px 0 0 #000;
+            transform: translate(4px, 4px);
+        }
+
+        /* 8-Bit Card/Box Style */
+        .bit-box {
+            border: 4px solid #000;
+            box-shadow: 8px 8px 0 0 #000;
+            background-color: #ffffff;
+        }
+
+        /* 8-Bit Input/Select Style */
+        .input-8bit {
+            border: 3px solid #000;
+            background-color: #ffffff;
+            box-shadow: 2px 2px 0 0 #000;
+            appearance: none; /* Hilangkan default arrow */
+        }
+        .input-8bit:focus {
+             box-shadow: 4px 4px 0 0 #000;
+        }
+
+        .option-card {
+            border: 2px solid #000;
+            transition: all 0.2s;
+            cursor: pointer;
+            @apply rounded-md;
+        }
+        
+        .option-card.active {
+            background-color: #e5b701; /* Secondary color for active state */
+            color: #000;
+            box-shadow: none;
+            transform: translate(2px, 2px);
+        }
+        
+        .rank-number {
+            border: 2px solid #000;
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        /* Utility for Mobile Fixed Footer Bar Padding */
+        .pb-mobile-footer {
+             padding-bottom: 64px; /* Tinggi mobile footer (h-16) + margin */
+        }
+
+        /* Checkbox 8-Bit Style */
+        input[type="checkbox"]:checked {
+            background-color: #01a8f7; /* Primary bit color */
+            border-color: #000;
+        }
+        .checkbox-8bit {
+            border: 2px solid #000;
+            width: 1rem;
+            height: 1rem;
+            box-shadow: 1px 1px 0 0 #000;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans antialiased">
+
+    <header class="bg-white/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 md:hidden flex items-center h-16 px-4 border-b border-gray-900">
+        <a href="javascript:history.back()" class="text-gray-700 hover:text-primary-bit transition-colors">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+        </a>
+        <h1 class="flex-grow text-center text-sm font-pixel text-gray-900">ORDER JOKI</h1>
+    </header>
+
+    <header class="bg-white text-gray-600 py-2 text-sm hidden md:block border-b border-gray-200">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="mailto:info@website.com"
+                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    info@website.com
+                </a>
+                <a href="tel:081234567890"
+                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 3a1 1 0 011-1h2.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L6 7a1 1 0 01-1-1V5a1 1 0 00-1-1H3a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1v-1a1 1 0 011-1h3.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L16 19a1 1 0 01-1-1v-2a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2a1 1 0 00-1-1H3a1 1 0 00-1 1z"
+                            clip-rule="evenodd" fill-rule="evenodd"></path>
+                    </svg>
+                    0812-3456-7890
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#"
+                    class="btn-8bit px-4 py-2 text-primary-bit font-pixel text-xs rounded-full hover:bg-gray-200 transition-all duration-300">Login</a>
+                <a href="#"
+                    class="btn-8bit px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <nav id="main-header"
+        class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-pixel text-primary-bit tracking-wider">
+                <img src="image/logo.png" alt="" width="100">
+            </a>
+            <div class="flex items-center space-x-8">
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Top-up
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Transaksi
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Leaderboard
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Blog
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Kontak
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8 pt-20 md:pt-8">
+        
+        <div class="mb-8 p-6 bg-secondary-bit bit-box border-4 border-gray-900">
+            <div class="flex items-center space-x-4">
+                <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png" alt="Mobile Legends Logo" class="w-16 h-16 object-contain border-2 border-gray-900 bg-white">
+                <div>
+                    <h1 class="text-2xl font-pixel text-gray-900">JOKI RANK MLBB</h1>
+                    <p class="text-sm font-pixel text-primary-bit">DARI EPIC KE LEGEND</p>
+                </div>
+            </div>
+        </div>
+
+        <form id="joki-form" class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-mobile-footer md:pb-8">
+            
+            <div class="lg:col-span-2 space-y-8">
+                
+                <section class="p-6 bg-white bit-box">
+                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">1</span> 
+                        PILIH RANK & BINTANG
+                    </h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="relative">
+                            <label for="rank-start" class="block text-sm font-pixel text-gray-700 mb-2">RANK SAAT INI</label>
+                            <select id="rank-start" name="rank-start" required
+                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                <option value="" disabled selected>-- Pilih Rank Awal --</option>
+                                <option value="Epic_I">EPIC I (4 Bintang)</option>
+                                <option value="Epic_II">EPIC II (3 Bintang)</option>
+                                <option value="Legend_V">LEGEND V (0 Bintang)</option>
+                                <option value="Mythic_V">MYTHIC V (0 Bintang)</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 pt-8 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <label for="rank-end" class="block text-sm font-pixel text-gray-700 mb-2">RANK TUJUAN</label>
+                            <select id="rank-end" name="rank-end" required
+                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                <option value="" disabled selected>-- Pilih Rank Akhir --</option>
+                                <option value="Legend_V">LEGEND V</option>
+                                <option value="Mythic_V">MYTHIC V</option>
+                                <option value="Mythical_Glory">MYTHICAL GLORY</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 pt-8 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="joki-price-info" class="mt-6 p-4 bg-gray-200 border-2 border-gray-900 text-center">
+                        <p class="font-pixel text-xs text-gray-700">HARGA PERKIRAAN:</p>
+                        <p class="font-pixel text-xl text-red-600 mt-1">RP 0</p>
+                    </div>
+
+                </section>
+
+                <section class="p-6 bg-white bit-box">
+                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">2</span> 
+                        LAYANAN TAMBAHAN
+                    </h2>
+                    
+                    <div id="extra-service-options" class="space-y-4">
+                        <label class="option-card flex items-center p-3 bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="extra-service" value="prioritas" data-cost="50000" class="checkbox-8bit w-4 h-4 mr-3 mt-1 text-primary-bit border-gray-900 rounded focus:ring-primary-bit">
+                            <span class="font-pixel text-xs flex-grow">JOKI PRIORITAS (2x LEBIH CEPAT)</span>
+                            <span class="text-sm font-pixel text-green-700">RP 50.000</span>
+                        </label>
+                        <label class="option-card flex items-center p-3 bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="extra-service" value="hero-request" data-cost="25000" class="checkbox-8bit w-4 h-4 mr-3 mt-1 text-primary-bit border-gray-900 rounded focus:ring-primary-bit">
+                            <span class="font-pixel text-xs flex-grow">REQUEST HERO TERTENTU</span>
+                            <span class="text-sm font-pixel text-green-700">RP 25.000</span>
+                        </label>
+                        <label class="option-card flex items-center p-3 bg-gray-100 cursor-pointer">
+                            <input type="checkbox" name="extra-service" value="live-streaming" data-cost="30000" class="checkbox-8bit w-4 h-4 mr-3 mt-1 text-primary-bit border-gray-900 rounded focus:ring-primary-bit">
+                            <span class="font-pixel text-xs flex-grow">LIVE STREAMING JOKI</span>
+                            <span class="text-sm font-pixel text-green-700">RP 30.000</span>
+                        </label>
+                    </div>
+                </section>
+                
+                <section class="p-6 bg-white bit-box">
+                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">3</span> 
+                        DETAIL AKUN & KONTAK
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="login-method" class="block text-sm font-pixel text-gray-700 mb-2">METODE LOGIN</label>
+                                <select id="login-method" name="login-method" required
+                                    class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                    <option value="Moonton">MOONTON</option>
+                                    <option value="VK">VK</option>
+                                    <option value="Google">GOOGLE PLAY</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="login-email" class="block text-sm font-pixel text-gray-700 mb-2">LOGIN EMAIL</label>
+                                <input type="email" id="login-email" name="login-email" placeholder="Email Moonton/VK" required
+                                    class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                            </div>
+                            <div class="col-span-1 md:col-span-2">
+                                <label for="login-password" class="block text-sm font-pixel text-gray-700 mb-2">LOGIN PASSWORD</label>
+                                <input type="password" id="login-password" name="login-password" placeholder="Password Akun" required
+                                    class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6 border-t pt-4 border-gray-200">
+                             <label for="contact-phone" class="block text-sm font-pixel text-gray-700 mb-2">NO. WA AKTIF</label>
+                             <input type="tel" id="contact-phone" name="contact-phone" placeholder="08xx untuk update" required
+                                 class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="p-6 bg-white bit-box">
+                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">4</span> 
+                        KODE PROMO & PEMBAYARAN
+                    </h2>
+                    
+                    <div class="space-y-4">
+                        <div class="relative">
+                            <label for="promo-code" class="block text-sm font-pixel text-gray-700 mb-2">KODE PROMO (OPSIONAL)</label>
+                            <input type="text" id="promo-code" name="promo-code" placeholder="Masukkan kode diskon"
+                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs pr-24">
+                            <button type="button" id="apply-promo"
+                                class="btn-8bit absolute top-[36px] right-0 px-3 py-1 bg-secondary-bit text-gray-900 font-pixel text-[10px] rounded-sm">
+                                PAKAI
+                            </button>
+                        </div>
+                        <div id="promo-status" class="text-[10px] font-pixel text-red-600"></div>
+
+                        <div class="relative pt-4">
+                            <label for="payment-method" class="block text-sm font-pixel text-gray-700 mb-2">METODE PEMBAYARAN</label>
+                            <select id="payment-method" name="payment-method" required
+                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                <option value="qris" data-fee="5000">QRIS (Fee: Rp 5.000)</option>
+                                <option value="dana" data-fee="3500">DANA (Fee: Rp 3.500)</option>
+                                <option value="bca" data-fee="7000">Transfer BCA (Fee: Rp 7.000)</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 pt-8 text-gray-700">
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+            
+            <div class="lg:col-span-1 space-y-8">
+                 <section class="p-6 bg-secondary-bit bit-box lg:sticky lg:top-4">
+                    <h2 class="text-xl font-pixel text-gray-900 mb-4">RINGKASAN ORDER</h2>
+                    
+                    <div class="space-y-3 border-t-2 border-b-2 border-gray-900 py-4 text-sm font-pixel">
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Layanan:</span> <span id="summary-joki-rank">Pilih Rank</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Harga Dasar:</span> <span id="summary-base-price">Rp 0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Tambahan Jasa:</span> <span id="summary-extra-cost">+ Rp 0</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Biaya Pembayaran:</span> <span id="summary-admin-fee">Rp 5.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-700">Diskon Voucher:</span> <span id="summary-discount" class="text-red-600">- Rp 0</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between mt-4 text-lg font-pixel">
+                        <span>TOTAL BAYAR:</span>
+                        <span id="total-price" class="text-primary-bit">RP 5.000</span>
+                    </div>
+                    
+                    <p class="text-[8px] text-gray-700 mt-6 font-pixel text-center">Pastikan akun tidak aktif saat joki berlangsung!</p>
+
+                    <button type="submit"
+                        class="btn-8bit w-full px-6 py-4 bg-primary-bit text-white font-pixel text-sm rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300 mt-2">
+                        ORDER JOKI!
+                    </button>
+                </section>
+            </div>
+            
+        </form>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-900 shadow-xl md:hidden z-50 h-16">
+        <nav class="flex justify-around items-center h-full text-gray-700">
+            <div class="flex flex-col items-start justify-center p-2">
+                <span class="text-xs font-pixel text-gray-600">TOTAL:</span>
+                <span id="total-price-mobile" class="text-sm font-pixel text-primary-bit">RP 5.000</span>
+            </div>
+             <button type="submit" form="joki-form"
+                class="btn-8bit flex-grow mx-4 px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 transition-all duration-300">
+                ORDER JOKI
+            </button>
+        </nav>
+    </div>
+
+    <script>
+        // --- Simulasi Harga dan Total ---
+
+        const RANK_PRICES = 250000; // Simulasi Harga Dasar Joki
+        const ADMIN_FEE_DEFAULT = 5000;
+        let APPLIED_DISCOUNT = 0; // State diskon voucher yang diterapkan
+
+        const extraPrices = {
+            'prioritas': 50000,
+            'hero-request': 25000,
+            'live-streaming': 30000
+        };
+
+        function formatRupiah(number) {
+            if (number < 0) return '- ' + 'Rp ' + Math.abs(number).toLocaleString('id-ID');
+            return 'Rp ' + number.toLocaleString('id-ID');
+        }
+        
+        function getPaymentFee() {
+            const select = document.getElementById('payment-method');
+            const selectedOption = select.options[select.selectedIndex];
+            return parseInt(selectedOption.getAttribute('data-fee')) || ADMIN_FEE_DEFAULT;
+        }
+
+        function calculatePrice() {
+            const rankStart = document.getElementById('rank-start').value.replace(/\s\(.*\)/, '');
+            const rankEnd = document.getElementById('rank-end').value.replace(/\s\(.*\)/, '');
+            const checkboxes = document.querySelectorAll('input[name="extra-service"]:checked');
+
+            // 1. Harga Dasar (Simulasi: 250K hanya jika Rank dipilih)
+            let basePrice = 0;
+            let jokiLabel = "Pilih Rank";
+            if (rankStart && rankEnd) {
+                 basePrice = RANK_PRICES;
+                 jokiLabel = `${rankStart.split('_')[0]} → ${rankEnd.split('_')[0]}`;
+            }
+            
+            // Update Info Harga di Step 1
+            document.getElementById('joki-price-info').querySelector('.text-xl').textContent = formatRupiah(basePrice);
+
+            // 2. Hitung Biaya Tambahan
+            let extraCost = 0;
+            checkboxes.forEach(cb => {
+                extraCost += parseInt(cb.getAttribute('data-cost'));
+            });
+            
+            // 3. Biaya Pembayaran
+            const paymentFee = getPaymentFee();
+            
+            // 4. Hitung Total
+            const total = basePrice + extraCost + paymentFee - APPLIED_DISCOUNT;
+
+
+            // 5. Update UI Ringkasan (Summary)
+            document.getElementById('summary-joki-rank').textContent = jokiLabel;
+            document.getElementById('summary-base-price').textContent = formatRupiah(basePrice);
+            document.getElementById('summary-extra-cost').textContent = extraCost > 0 ? `+ ${formatRupiah(extraCost)}` : formatRupiah(0);
+            document.getElementById('summary-admin-fee').textContent = formatRupiah(paymentFee);
+            document.getElementById('summary-discount').textContent = `- ${formatRupiah(APPLIED_DISCOUNT)}`;
+            
+            document.getElementById('total-price').textContent = formatRupiah(total);
+            document.getElementById('total-price-mobile').textContent = formatRupiah(total);
+        }
+
+        // --- Logika Voucher ---
+        document.getElementById('apply-promo').addEventListener('click', () => {
+            const promoCode = document.getElementById('promo-code').value.toUpperCase().trim();
+            const promoStatus = document.getElementById('promo-status');
+
+            // Simulasi Cek Voucher
+            if (promoCode === 'JOKIHEMAT') {
+                APPLIED_DISCOUNT = 50000; // Diskon 50 ribu
+                promoStatus.textContent = `VOUCHER BERHASIL! Diskon ${formatRupiah(APPLIED_DISCOUNT)}.`;
+                promoStatus.classList.remove('text-red-600');
+                promoStatus.classList.add('text-green-700');
+            } else if (promoCode) {
+                 APPLIED_DISCOUNT = 0;
+                 promoStatus.textContent = `KODE VOUCHER "${promoCode}" TIDAK VALID.`;
+                 promoStatus.classList.add('text-red-600');
+                 promoStatus.classList.remove('text-green-700');
+            } else {
+                 APPLIED_DISCOUNT = 0;
+                 promoStatus.textContent = '';
+            }
+            
+            calculatePrice();
+        });
+
+        // Event listeners utama
+        document.getElementById('rank-start').addEventListener('change', calculatePrice);
+        document.getElementById('rank-end').addEventListener('change', calculatePrice);
+        document.getElementById('payment-method').addEventListener('change', calculatePrice);
+        document.querySelectorAll('input[name="extra-service"]').forEach(checkbox => {
+            checkbox.addEventListener('change', calculatePrice);
+        });
+
+        // Jalankan kalkulasi awal saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', calculatePrice);
+    </script>
+
+</body>
+
+</html>

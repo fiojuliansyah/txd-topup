@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top-Up Game & PPOB | 8-Bit Mode</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        /* Konfigurasi warna baru */
+        @layer utilities {
+            .text-primary-bit {
+                color: #01a8f7;
+            }
+            .bg-primary-bit {
+                background-color: #01a8f7;
+            }
+            .hover-bg-primary-bit:hover {
+                background-color: #01a8f7;
+            }
+            .ring-primary-bit:focus {
+                --tw-ring-color: #01a8f7;
+            }
+            .text-secondary-bit {
+                color: #e5b701;
+            }
+            .bg-secondary-bit {
+                background-color: #e5b701;
+            }
+            .hover-text-secondary-bit:hover {
+                color: #e5b701;
+            }
+            .shadow-primary-bit {
+                --tw-shadow-color: #01a8f7;
+                --tw-shadow: var(--tw-shadow-color) 0px 8px 24px -8px;
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+            }
+        }
+        
+        /* Font 8-Bit dan penyesuaian scrollbar */
+        .font-pixel {
+            font-family: 'Press Start 2P', cursive;
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .product-popular-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            padding: 4px;
+            border-radius: 8px;
+            /* Border 8-bit style */
+            border: 3px solid #000;
+        }
+
+        /* 8-Bit Button Style */
+        .btn-8bit {
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0 0 #000;
+            transition: all 0.1s;
+        }
+        
+        .btn-8bit:active {
+            box-shadow: 0px 0px 0 0 #000;
+            transform: translate(4px, 4px);
+        }
+
+        /* Flash Sale Item 8-Bit Style */
+        .flash-sale-product {
+            border: 3px solid #000;
+            box-shadow: 4px 4px 0 0 #000;
+            background-color: #f0f0f0; /* Light background for items */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans antialiased">
+    <header class="bg-white text-gray-600 py-2 text-sm hidden md:block border-b border-gray-200">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <a href="mailto:info@website.com"
+                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    info@website.com
+                </a>
+                <a href="tel:081234567890"
+                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            d="M2 3a1 1 0 011-1h2.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L6 7a1 1 0 01-1-1V5a1 1 0 00-1-1H3a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1v-1a1 1 0 011-1h3.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L16 19a1 1 0 01-1-1v-2a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2a1 1 0 00-1-1H3a1 1 0 00-1 1z"
+                            clip-rule="evenodd" fill-rule="evenodd"></path>
+                    </svg>
+                    0812-3456-7890
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="#"
+                    class="btn-8bit px-4 py-2 text-primary-bit font-pixel text-xs rounded-full hover:bg-gray-200 transition-all duration-300">Login</a>
+                <a href="#"
+                    class="btn-8bit px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
+            </div>
+        </div>
+    </header>
+
+    <nav id="main-header"
+        class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-300">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-pixel text-primary-bit tracking-wider">
+                <img src="image/logo.png" alt="" width="100">
+            </a>
+            <div class="flex items-center space-x-8">
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Top-up
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Transaksi
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Leaderboard
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Blog
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+                <a href="#"
+                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    Kontak
+                    <span
+                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 mt-8 lg:flex lg:gap-8">
+
+        <div class="hidden lg:block lg:w-52 mt-8">
+            <div class="sticky top-[100px]">
+                <a href="#"
+                    class="block w-full h-[600px] bg-white rounded-lg shadow-xl overflow-hidden transition-shadow duration-300 border-4 border-gray-900">
+                    <img src="https://storage.pixteller.com/designs/designs-videos/2092009-5fe0b7fb1f863/thumb.gif"
+                        alt="Iklan Sisi Kiri" class="w-full h-full object-cover">
+                </a>
+            </div>
+        </div>
+
+        <main class="w-full lg:flex-grow pb-20 md:pb-16 lg:pb-16">
+
+            <section
+                class="sticky mb-8 top-0 z-40 bg-gray-100/90 backdrop-blur-sm py-4 md:static md:bg-transparent md:backdrop-blur-none md:py-0">
+                <div class="relative w-full">
+                    <input type="text" placeholder="Cari game atau layanan lainnya..."
+                        class="w-full pl-12 pr-4 py-3 rounded-full bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-primary-bit focus:border-transparent transition-all duration-300 shadow-lg border-2 border-gray-900 font-pixel text-xs">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                        <svg class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-8 p-4 bg-secondary-bit rounded-lg shadow-xl md:p-6 border-4 border-gray-900">
+                <div class="flex items-center space-x-3">
+                    <div
+                        class="flex-shrink-0 w-12 h-12 flex items-center justify-center rounded-full bg-white text-primary-bit animate-pulse border-2 border-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 8v4l3 3" />
+                        </svg>
+                    </div>
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-pixel text-gray-900">Dapatkan Reward Setiap Hari!</h3>
+                        <p class="text-sm text-gray-800 mt-1 hidden md:block">Klaim reward harianmu dan kumpulkan poin
+                            untuk ditukar dengan diskon menarik.</p>
+                        <p class="text-xs text-gray-700 md:hidden">Klaim reward harian!</p>
+                    </div>
+                    <a href="[URL_REWARD]"
+                        class="btn-8bit flex-shrink-0 px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit">Klaim</a>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <div class="relative w-full overflow-hidden rounded-lg shadow-xl border-4 border-gray-900"
+                    id="carousel-container">
+                    <div class="carousel-inner flex transition-transform duration-500 ease-in-out">
+                        <div class="carousel-item w-full flex-shrink-0">
+                            <img src="https://www.ourastore.com/_next/image?url=https%3A%2F%2Fcdn.ourastore.com%2Fourastore.com%2Fbanner%2Fpromobulananbanner-ezgif.com-optijpeg.jpg&w=1920&q=100"
+                                alt="Banner 1" class="w-full rounded-lg">
+                        </div>
+                        <div class="carousel-item w-full flex-shrink-0">
+                            <img src="https://www.ourastore.com/_next/image?url=https%3A%2F%2Fcdn.ourastore.com%2Fourastore.com%2Fbanner%2Fpromorobloxbannerweb-ezgif.com-optijpeg.jpg&w=1920&q=100"
+                                alt="Banner 2" class="w-full rounded-lg">
+                        </div>
+                        <div class="carousel-item w-full flex-shrink-0">
+                            <img src="https://www.ourastore.com/_next/image?url=https%3A%2F%2Fcdn.ourastore.com%2Fourastore.com%2Fbanner%2Fhanabistarlightbannerweb-ezgif.com-optijpeg.jpg&w=1920&q=100"
+                                alt="Banner 3" class="w-full rounded-lg">
+                        </div>
+                    </div>
+                    <button
+                        class="carousel-prev absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90 transition-colors text-gray-900 focus:outline-none border-2 border-gray-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                            </path>
+                        </svg>
+                    </button>
+                    <button
+                        class="carousel-next absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 p-2 rounded-full hover:bg-white/90 transition-colors text-gray-900 focus:outline-none border-2 border-gray-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-pixel text-gray-900 mb-4">Layanan Cepat</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <a href="#"
+                        class="flex flex-col items-center p-4 bg-white rounded-lg shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10 text-primary-bit mb-2 group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                            <circle cx="8.5" cy="7" r="4" />
+                            <path d="M20 8v6M23 11h-6" />
+                        </svg>
+                        <span class="font-pixel text-sm text-gray-900">Joki</span>
+                    </a>
+                    <a href="#"
+                        class="flex flex-col items-center p-4 bg-white rounded-lg shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10 text-primary-bit mb-2 group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                            <path d="M7 10l5 5l5-5" />
+                            <path d="M12 15V3" />
+                        </svg>
+                        <span class="font-pixel text-sm text-gray-900">Rekber</span>
+                    </a>
+                    <a href="#"
+                        class="flex flex-col items-center p-4 bg-white rounded-lg shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10 text-primary-bit mb-2 group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+                        </svg>
+                        <span class="font-pixel text-sm text-gray-900">Titip</span>
+                    </a>
+                    <a href="#"
+                        class="flex flex-col items-center p-4 bg-white rounded-lg shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="w-10 h-10 text-primary-bit mb-2 group-hover:scale-110 transition-transform duration-300"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8a3 3 0 00-3.235-3A8.5 8.5 0 1010 20.91V16H6V12h4v-4" />
+                        </svg>
+                        <span class="font-pixel text-sm text-gray-900">Lelang</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <div
+                    class="bg-primary-bit p-6 rounded-lg shadow-2xl relative overflow-hidden border-4 border-gray-900">
+                    <div class="absolute inset-0 bg-white/20 [mask-image:linear-gradient(to_bottom,transparent,white)]">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-8 h-8 text-secondary-bit" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M11.905 1.772a.96.96 0 011.19 0l3.05 1.83a.96.96 0 01.517.832v3.66a.96.96 0 01-.517.833l-3.05 1.83a.96.96 0 01-1.19 0l-3.05-1.83a.96.96 0 01-.517-.833v-3.66a.96.96 0 01.517-.832l3.05-1.83zM10 13a4 4 0 100-8 4 4 0 000 8z" />
+                                    <path fill-rule="evenodd"
+                                        d="M12.905 1.772a.96.96 0 011.19 0l3.05 1.83a.96.96 0 01.517.832v3.66a.96.96 0 01-.517.833l-3.05 1.83a.96.96 0 01-1.19 0l-3.05-1.83a.96.96 0 01-.517-.833v-3.66a.96.96 0 01.517-.832l3.05-1.83zM10 13a4 4 0 100-8 4 4 0 000 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <h2 class="text-2xl font-pixel text-white">Flash Sale</h2>
+                            </div>
+                            <div class="flex items-center space-x-2 text-white font-mono text-lg">
+                                <span id="countdown-timer"
+                                    class="bg-gray-900/40 px-3 py-1 rounded-md shadow-md font-pixel text-sm">00:00:00</span>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto scrollbar-hide">
+                            <div class="flex space-x-4 pb-2">
+                                <div
+                                    class="flash-sale-product flex-shrink-0 w-48 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] cursor-pointer relative">
+                                    <span
+                                        class="absolute top-2 left-2 bg-red-600 text-white text-xs font-pixel px-2 py-1 z-20 border-2 border-gray-900">
+                                        -20%
+                                    </span>
+                                    <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png"
+                                        alt="Mobile Legends Flash Sale" class="w-full h-32 object-contain p-4">
+                                    <div class="p-4 pt-0 text-center">
+                                        <h4 class="font-pixel text-sm text-gray-900">Mobile Legends</h4>
+                                        <p class="text-xs text-gray-600">Diamond</p>
+                                        <p class="text-sm font-pixel text-green-700 mt-2">Rp 4.000</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flash-sale-product flex-shrink-0 w-48 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] cursor-pointer relative">
+                                    <span
+                                        class="absolute top-2 left-2 bg-red-600 text-white text-xs font-pixel px-2 py-1 z-20 border-2 border-gray-900">
+                                        -15%
+                                    </span>
+                                    <img src="https://image.api.playstation.com/vulcan/ap/rnd/202508/2602/30935168a0f21b6710dc2bd7bb37c23ed937fb9fa747d84c.png"
+                                        alt="Genshin Impact Flash Sale" class="w-full h-32 object-contain p-4">
+                                    <div class="p-4 pt-0 text-center">
+                                        <h4 class="font-pixel text-sm text-gray-900">Genshin Impact</h4>
+                                        <p class="text-xs text-gray-600">Genesis Crystal</p>
+                                        <p class="text-sm font-pixel text-green-700 mt-2">Rp 15.000</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flash-sale-product flex-shrink-0 w-48 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] cursor-pointer relative">
+                                    <span
+                                        class="absolute top-2 left-2 bg-red-600 text-white text-xs font-pixel px-2 py-1 z-20 border-2 border-gray-900">
+                                        -25%
+                                    </span>
+                                    <img src="https://i.scdn.co/image/ab67616d0000b273c72fc87f92c0e770bcc25ce7"
+                                        alt="Free Fire Flash Sale" class="w-full h-32 object-contain p-4">
+                                    <div class="p-4 pt-0 text-center">
+                                        <h4 class="font-pixel text-sm text-gray-900">Free Fire</h4>
+                                        <p class="text-xs text-gray-600">Diamond</p>
+                                        <p class="text-sm font-pixel text-green-700 mt-2">Rp 3.500</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flash-sale-product flex-shrink-0 w-48 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-[1.02] cursor-pointer relative">
+                                    <span
+                                        class="absolute top-2 left-2 bg-red-600 text-white text-xs font-pixel px-2 py-1 z-20 border-2 border-gray-900">
+                                        -10%
+                                    </span>
+                                    <img src="https://yt3.googleusercontent.com/iam5jHOrZf-h2ADv9XWbB9DKzLAHB8kMbFyCKOb389Kd_zwQ-t_McFpeJFc3zfH9wduaa1J97w=s900-c-k-c0x00ffffff-no-rj"
+                                        alt="PUBG Mobile Flash Sale" class="w-full h-32 object-contain p-4">
+                                    <div class="p-4 pt-0 text-center">
+                                        <h4 class="font-pixel text-sm text-gray-900">PUBG Mobile</h4>
+                                        <p class="text-xs text-gray-600">UC</p>
+                                        <p class="text-sm font-pixel text-green-700 mt-2">Rp 10.000</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-6">
+                            <a href="#"
+                                class="btn-8bit inline-block px-6 py-3 bg-white text-primary-bit font-pixel text-xs rounded-full hover:bg-gray-200 shadow-lg">Lihat
+                                Semua Promo 🎉</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-pixel text-gray-900 mb-4">Produk Populer 🔥</h2>
+                <div class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <div class="flex items-center p-2">
+                            <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png/revision/latest?cb=20241013132437"
+                                alt="Mobile Legends"
+                                class="product-popular-image transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                            <div class="ml-4">
+                                <h3 class="font-pixel text-xs text-gray-900">Mobile Legends</h3>
+                                <p class="text-sm text-gray-600">Top-up Diamond</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <div class="flex items-center p-2">
+                            <img src="https://i.scdn.co/image/ab67616d0000b273c72fc87f92c0e770bcc25ce7"
+                                alt="Free Fire"
+                                class="product-popular-image transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                            <div class="ml-4">
+                                <h3 class="font-pixel text-xs text-gray-900">Free Fire</h3>
+                                <p class="text-sm text-gray-600">Top-up Diamond</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 group cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <div class="flex items-center p-2">
+                            <img src="https://yt3.googleusercontent.com/iam5jHOrZf-h2ADv9XWbB9DKzLAHB8kMbFyCKOb389Kd_zwQ-t_McFpeJFc3zfH9wduaa1J97w=s900-c-k-c0x00ffffff-no-rj" alt="PUBG Mobile"
+                                class="product-popular-image transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                            <div class="ml-4">
+                                <h3 class="font-pixel text-xs text-gray-900">PUBG Mobile</h3>
+                                <p class="text-sm text-gray-600">Top-up UC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <h2 class="text-2xl font-pixel text-gray-900 mb-4">Semua Produk</h2>
+                <div class="flex space-x-2 md:space-x-4 mb-6 overflow-x-auto whitespace-nowrap scrollbar-hide">
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-xs font-pixel bg-primary-bit text-white shadow-md active-tab hover:bg-opacity-90 transition-colors btn-8bit !shadow-none"
+                        data-tab="game">Game</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-xs font-pixel bg-white text-gray-900 shadow-md hover:bg-gray-200 hover:text-primary-bit transition-colors btn-8bit !shadow-none"
+                        data-tab="ppob">PPOB</button>
+                    <button
+                        class="tab-button px-4 py-2 rounded-full text-xs font-pixel bg-white text-gray-900 shadow-md hover:bg-gray-200 hover:text-primary-bit transition-colors btn-8bit !shadow-none"
+                        data-tab="voucher">Voucher</button>
+                </div>
+
+                <div id="tab-content-game"
+                    class="grid grid-cols-3 md:grid-cols-6 gap-4 tab-content active-tab-content">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png/revision/latest?cb=20241013132437"
+                            alt="Mobile Legends"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Mobile Legends</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://image.api.playstation.com/vulcan/ap/rnd/202508/2602/30935168a0f21b6710dc2bd7bb37c23ed937fb9fa747d84c.png"
+                            alt="Genshin Impact"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Genshin Impact</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://i.scdn.co/image/ab67616d0000b273c72fc87f92c0e770bcc25ce7" alt="Free Fire"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Free Fire</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://yt3.googleusercontent.com/iam5jHOrZf-h2ADv9XWbB9DKzLAHB8kMbFyCKOb389Kd_zwQ-t_McFpeJFc3zfH9wduaa1J97w=s900-c-k-c0x00ffffff-no-rj" alt="PUBG Mobile"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">PUBG Mobile</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://static.wikia.nocookie.net/callofduty/images/f/f4/App_Icon_CODM_Global.jpg/revision/latest?cb=20200507033012"
+                            alt="Call of Duty Mobile"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">CODM</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://assets-prd.ignimgs.com/2021/12/21/valorant-1640045685890.jpg"
+                            alt="Valorant"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Valorant</h4>
+                    </div>
+                </div>
+
+                <div id="tab-content-ppob" class="hidden grid grid-cols-3 md:grid-cols-6 gap-4 tab-content">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://pbs.twimg.com/profile_images/1615014838526414849/SD773Ted_400x400.jpg"
+                            alt="Token Listrik"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Token Listrik</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://play-lh.googleusercontent.com/z8wOgolfm_VxDZKcFYqRgBZF3tlQ6zRQ8_cyO5pWqq8V3QTwQi0eWUz245539uhjeZQ=w240-h480-rw" alt="Pulsa"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Pulsa</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://play-lh.googleusercontent.com/z8wOgolfm_VxDZKcFYqRgBZF3tlQ6zRQ8_cyO5pWqq8V3QTwQi0eWUz245539uhjeZQ=w240-h480-rw" alt="Paket Data"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Paket Data</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://mpp.wonogirikab.go.id/uploads/images/Logo-BPJS-Kesehatan.jpg"
+                            alt="BPJS Kesehatan"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">BPJS</h4>
+                    </div>
+                </div>
+
+                <div id="tab-content-voucher" class="hidden grid grid-cols-3 md:grid-cols-6 gap-4 tab-content">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://www.bangjeff.com/_next/image?url=https%3A%2F%2Fcdn.bangjeff.com%2F49fdb2f7-41d0-4daa-b115-d75717eaa6f2.webp&w=3840&q=75"
+                            alt="Steam Wallet"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Steam Wallet</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://static-src.vocagame.com/gopay/psn_voucher-3ed-original.webp"
+                            alt="PSN Voucher"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">PSN Voucher</h4>
+                    </div>
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden text-center p-2 group hover:shadow-xl transition-shadow duration-300 cursor-pointer border-3 border-gray-900 btn-8bit">
+                        <img src="https://yt3.googleusercontent.com/PJh5BeCRze4_08Qp8zOtb2bV6JGLiqmmc9QIRTVeTlrVmC2828C7gw5KIOU8uk70jN__SSY5Ug=s900-c-k-c0x00ffffff-no-rj" alt="Google Play"
+                            class="mx-auto w-20 h-20 object-contain mb-2 transform group-hover:scale-105 transition-transform duration-300 bg-secondary-bit/20">
+                        <h4 class="font-pixel text-[10px] text-gray-900">Google Play</h4>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-12">
+                <div
+                    class="bg-secondary-bit text-gray-900 p-6 rounded-lg shadow-md text-center border-4 border-gray-900">
+                    <h3 class="text-xl font-pixel mb-2">Dapatkan Promo Spesial Sekarang!</h3>
+                    <p class="text-sm mb-4">Jangan lewatkan diskon menarik untuk top-up game favoritmu.</p>
+                    <a href="#"
+                        class="btn-8bit inline-block px-6 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90">Cek
+                        Promo</a>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="hidden lg:block lg:w-52 mt-8">
+            <div class="sticky top-[100px]">
+                <a href="#"
+                    class="block w-full h-[600px] bg-white rounded-lg shadow-xl overflow-hidden transition-shadow duration-300 hover:shadow-2xl border-4 border-gray-900">
+                    <img src="https://infiniteingenuity.wordpress.com/wp-content/uploads/2015/03/animation.gif"
+                        alt="Iklan Sisi Kanan" class="w-full h-full object-cover">
+                </a>
+            </div>
+        </div>
+
+        <div class="fixed bottom-20 right-4 flex flex-col items-end space-y-4 z-[90]">
+            <a href="[URL_REWARD]"
+                class="block w-24 flex items-center justify-center transition-all duration-300 transform hover:scale-110 group cursor-pointer bg-white"
+                title="Get Reward">
+                <img src="https://www.ditusi.co.id/assets/images/gamification/gamification-icon.webp"
+                    alt="Reward Button" class="w-full h-full">
+            </a>
+            <a href="[URL_CS]"
+                class="block w-24 flex items-center justify-center transition-all duration-300 transform hover:scale-110 group cursor-pointer bg-white"
+                title="Customer Service">
+                <img src="https://www.ditusi.co.id/assets/images/cs.webp" alt="CS Button" class="w-full h-full">
+            </a>
+        </div>
+
+    </div>
+
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-gray-900/50 backdrop-blur-sm z-50 hidden md:hidden"></div>
+
+    <div id="mobile-sidebar-menu"
+        class="fixed top-0 left-0 h-full w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden border-r-4 border-gray-900">
+        <div class="flex justify-between items-center p-6 border-b-2 border-gray-900">
+            <a href="#" class="text-2xl font-pixel text-primary-bit">TOPUP.ID</a>
+            <button id="close-sidebar-button" class="text-gray-700 hover:text-primary-bit transition-colors">
+                <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+        </div>
+        <nav class="flex flex-col p-6 space-y-2">
+            <a href="#"
+                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Top-up</a>
+            <a href="#"
+                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Transaksi</a>
+            <a href="#"
+                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Leaderboard</a>
+            <a href="#"
+                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Blog</a>
+            <a href="#"
+                class="block px-4 py-3 rounded-lg text-gray-700 font-pixel text-xs hover:bg-gray-200 hover:text-primary-bit transition-colors border-2 border-transparent hover:border-primary-bit">Kontak</a>
+        </nav>
+        <div class="mt-8 px-6 flex flex-col space-y-4">
+            <a href="#"
+                class="btn-8bit px-4 py-2 text-primary-bit text-center font-pixel text-xs rounded-full border border-primary-bit hover:bg-primary-bit/20 transition-all duration-300 !shadow-none">Login</a>
+            <a href="#"
+                class="btn-8bit px-4 py-2 text-center bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
+        </div>
+    </div>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-300 shadow-xl md:hidden z-50">
+        <nav class="flex justify-around items-center h-16 text-gray-700">
+            <a href="#"
+                class="flex flex-col items-center justify-center p-2 hover:text-primary-bit transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z">
+                    </path>
+                </svg>
+                <span class="text-xs font-pixel">Beranda</span>
+            </a>
+            <a href="#"
+                class="flex flex-col items-center justify-center p-2 hover:text-primary-bit transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M9 2a1 1 0 00-1 1v2a1 1 0 002 0V3a1 1 0 00-1-1zM.05 3.555A1 1 0 001.24 4.743l1.545 1.545a1 1 0 001.414-1.414L2.653 3.329a1 1 0 00-1.399-.002L.05 3.555zM15 3a1 1 0 10-2 0v2a1 1 0 102 0V3zM1.05 16.445a1 1 0 001.414 0L4 14.858l1.293 1.293a1 1 0 101.414-1.414L5.414 13.445a1 1 0 00-1.414 0l-1.545 1.545a1 1 0 000 1.414zM16 10a1 1 0 00-1-1h-2a1 1 0 100 2h2a1 1 0 001-1zM3 10a1 1 0 00-1-1H1a1 1 0 000 2h1a1 1 0 001-1zM10 18a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1zM18.95 16.445a1 1 0 00-1.414 0L16 14.858l-1.293 1.293a1 1 0 10-1.414-1.414l1.545-1.545a1 1 0 001.414 0l1.545 1.545a1 1 0 000 1.414zM15 17a1 1 0 10-2 0v2a1 1 0 102 0v-2zM4 10a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1zM18 10a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1zM12 10a1 1 0 00-1 1v2a1 1 0 102 0v-2a1 1 0 00-1-1zM10 12a2 2 0 100 4 2 2 0 000-4z">
+                    </path>
+                </svg>
+                <span class="text-xs font-pixel">Produk</span>
+            </a>
+            <a href="#"
+                class="flex flex-col items-center justify-center p-2 hover:text-primary-bit transition-colors">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 2a8 8 0 100 16 8 8 0 000-16zm0 14a6 6 0 110-12 6 6 0 010 12zM9 9a1 1 0 100 2h2a1 1 0 100-2H9z">
+                    </path>
+                </svg>
+                <span class="text-xs font-pixel">Transaksi</span>
+            </a>
+            <button id="mobile-sidebar-trigger"
+                class="flex flex-col items-center justify-center p-2 hover:text-primary-bit">
+                <svg class="w-6 h-6 mb-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+                <span class="text-xs font-pixel">Menu</span>
+            </button>
+        </nav>
+    </div>
+
+    <footer class="bg-white text-gray-700 py-12 mt-12 border-t border-gray-300 hidden md:block">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="font-pixel text-sm text-primary-bit mb-4">Top-Up Game & PPOB</h3>
+                <p class="text-sm">Platform top-up game dan layanan PPOB terbaik, cepat, dan terpercaya.</p>
+            </div>
+            <div>
+                <h3 class="font-pixel text-sm text-gray-900 mb-4">Layanan</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Top-up Game</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Pembayaran PPOB</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Voucher Digital</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Top-up E-wallet</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-pixel text-sm text-gray-900 mb-4">Informasi</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Tentang Kami</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Syarat & Ketentuan</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Kebijakan Privasi</a></li>
+                    <li><a href="#" class="hover:text-primary-bit transition-colors">Hubungi Kami</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="font-pixel text-sm text-gray-900 mb-4">Ikuti Kami</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="hover:text-primary-bit transition-colors"><img
+                            src="https://via.placeholder.com/32/ffffff/01a8f7?text=FB" alt="Facebook"
+                            class="w-8 h-8 rounded-full border-2 border-gray-900"></a>
+                    <a href="#" class="hover:text-primary-bit transition-colors"><img
+                            src="https://via.placeholder.com/32/ffffff/01a8f7?text=IG" alt="Instagram"
+                            class="w-8 h-8 rounded-full border-2 border-gray-900"></a>
+                    <a href="#" class="hover:text-primary-bit transition-colors"><img
+                            src="https://via.placeholder.com/32/ffffff/01a8f7?text=X" alt="Twitter"
+                            class="w-8 h-8 rounded-full border-2 border-gray-900"></a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-8 border-t border-gray-300 pt-6 text-center text-xs text-gray-500 font-pixel">
+            © 2025 Top-Up Game & PPOB. ALL RIGHTS RESERVED.
+        </div>
+    </footer>
+
+    <script>
+        // Back-end logic to open and close sidebar
+        const mobileSidebarTrigger = document.getElementById('mobile-sidebar-trigger');
+        const mobileSidebarMenu = document.getElementById('mobile-sidebar-menu');
+        const closeSidebarButton = document.getElementById('close-sidebar-button');
+        const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+
+        function toggleSidebar() {
+            mobileSidebarMenu.classList.toggle('-translate-x-full');
+            mobileMenuBackdrop.classList.toggle('hidden');
+        }
+
+        mobileSidebarTrigger.addEventListener('click', toggleSidebar);
+        closeSidebarButton.addEventListener('click', toggleSidebar);
+        mobileMenuBackdrop.addEventListener('click', toggleSidebar);
+
+        // Tabbar Logic
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+
+                tabButtons.forEach(btn => {
+                    // Remove active styles
+                    btn.classList.remove('bg-primary-bit', 'text-white', 'active-tab');
+                    btn.classList.add('bg-white', 'text-gray-900');
+                });
+                tabContents.forEach(content => content.classList.add('hidden'));
+
+                // Add active styles
+                button.classList.add('bg-primary-bit', 'text-white', 'active-tab');
+                button.classList.remove('bg-white', 'text-gray-900');
+
+                document.getElementById(`tab-content-${targetTab}`).classList.remove('hidden');
+            });
+        });
+
+        // Carousel Logic (Sederhana)
+        const carouselContainer = document.getElementById('carousel-container');
+        const carouselInner = carouselContainer.querySelector('.carousel-inner');
+        const carouselItems = carouselContainer.querySelectorAll('.carousel-item');
+        const prevButton = carouselContainer.querySelector('.carousel-prev');
+        const nextButton = carouselContainer.querySelector('.carousel-next');
+
+        let currentIndex = 0;
+        const totalItems = carouselItems.length;
+
+        function updateCarousel() {
+            carouselInner.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        });
+        
+        // Initial button state for 8-bit styling
+        document.querySelector('.tab-button[data-tab="game"]').classList.remove('bg-gray-800', 'text-gray-300');
+        document.querySelector('.tab-button[data-tab="game"]').classList.add('bg-primary-bit', 'text-white');
+    </script>
+
+</body>
+
+</html>
