@@ -5,13 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Up Mobile Legends - Top Up & Voucher Game | TXD Top Up</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/tailwindcss">
         /* Konfigurasi warna baru */
         @layer utilities {
             .text-primary-bit {
-                color: #01a8f7;
+                color: #01a8f7; /* Primary Blue */
             }
             .bg-primary-bit {
                 background-color: #01a8f7;
@@ -23,116 +22,125 @@
                 --tw-ring-color: #01a8f7;
             }
             .text-secondary-bit {
-                color: #e5b701;
+                color: #e5b701; /* Secondary Yellow */
             }
             .bg-secondary-bit {
                 background-color: #e5b701;
             }
+            /* Shadow lebih simple */
             .shadow-primary-bit {
-                --tw-shadow-color: #01a8f7;
-                --tw-shadow: var(--tw-shadow-color) 0px 8px 24px -8px;
+                --tw-shadow-color: rgba(1, 168, 247, 0.4);
+                --tw-shadow: var(--tw-shadow-color) 0px 4px 12px;
                 box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
             }
         }
 
-        /* Font 8-Bit */
-        .font-pixel {
+        /* Hapus Font 8-Bit */
+        /* .font-pixel {
             font-family: 'Press Start 2P', cursive;
-        }
+        } */
         
-        /* 8-Bit Button Style */
-        .btn-8bit {
-            border: 3px solid #000;
-            box-shadow: 4px 4px 0 0 #000;
-            transition: all 0.1s;
+        /* Hapus 8-Bit Button Style, ganti ke style modern */
+        .btn-simple {
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            border-radius: 9999px; /* Full rounded for pill shape */
         }
-        .btn-8bit:active {
-            box-shadow: 0px 0px 0 0 #000;
-            transform: translate(4px, 4px);
+        .btn-simple:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            transform: translateY(1px);
         }
 
-        /* 8-Bit Card/Box Style */
-        .bit-box {
-            border: 4px solid #000;
-            box-shadow: 8px 8px 0 0 #000;
+        /* 8-Bit Card/Box Style diganti Card Simple */
+        .simple-box {
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
             background-color: #ffffff;
+            border-radius: 12px; /* Lebih rounded */
         }
         
-        /* 8-Bit Input Style */
-        .input-8bit {
-            border: 3px solid #000;
+        /* Input Field Simple Style */
+        .input-simple {
+            border: 1px solid #d1d5db;
             background-color: #ffffff;
-            box-shadow: 2px 2px 0 0 #000;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            transition: all 0.2s;
         }
 
-        .input-8bit:focus {
-             box-shadow: 4px 4px 0 0 #000;
+        .input-simple:focus {
+             box-shadow: 0 0 0 3px rgba(1, 168, 247, 0.2);
+             border-color: #01a8f7;
         }
 
         .option-card {
-            border: 2px solid #000;
+            border: 1px solid #e5e7eb;
             transition: all 0.2s;
             cursor: pointer;
-            @apply rounded-md;
+            @apply rounded-xl; /* Lebih rounded */
         }
         
         .option-card:hover {
-            box-shadow: 3px 3px 0 0 #000;
+            border-color: #a8a8a8;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
+        /* Active state menggunakan ring dan primary/secondary color */
         .option-card.active {
-            background-color: #e5b701; /* Secondary color for active state */
+            background-color: #fff;
             color: #000;
-            box-shadow: none;
-            transform: translate(2px, 2px);
+            border-color: #01a8f7; /* Primary color border */
+            box-shadow: 0 0 0 3px rgba(1, 168, 247, 0.3);
+            transform: none; /* Hilangkan translate */
         }
         
         .option-card.active:hover {
-            box-shadow: none;
+            box-shadow: 0 0 0 3px rgba(1, 168, 247, 0.3);
         }
         
-        .rank-number {
-            border: 2px solid #000;
-            font-family: 'Press Start 2P', cursive;
+        .rank-number-simple {
+            @apply flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white shadow-md;
         }
 
         /* Utility for Mobile Fixed Footer Bar Padding */
         .pb-mobile-footer {
-             padding-bottom: 64px; /* Tinggi mobile footer (h-16) + margin */
+             padding-bottom: 64px;
         }
 
         /* Rating Star Style */
         .rating-star {
-            color: #e5b701; /* Secondary color for stars */
+            color: #e5b701;
             display: inline-block;
             margin-right: 2px;
         }
 
         .review-card {
-            border: 2px solid #ccc;
-            background-color: #f9f9f9;
+            border: 1px solid #e5e7eb;
+            background-color: #ffffff;
+            @apply rounded-lg shadow-sm;
         }
         
         .review-card:nth-child(even) {
-            background-color: #fff;
+            background-color: #f9f9f9;
         }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-900 font-sans antialiased">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <header class="bg-white/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 md:hidden flex items-center h-16 px-4 border-b border-gray-900">
+    <header class="bg-white/90 backdrop-blur-sm fixed top-0 left-0 right-0 z-40 md:hidden flex items-center h-16 px-4 border-b border-gray-200 shadow-sm">
         <a href="javascript:history.back()" class="text-gray-700 hover:text-primary-bit transition-colors">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
         </a>
-        <h1 class="flex-grow text-center text-sm font-pixel text-gray-900">TOP UP MLBB</h1>
+        <h1 class="flex-grow text-center text-base font-semibold text-gray-900">TOP UP MLBB</h1>
     </header>
 
-    <header class="bg-white text-gray-600 py-2 text-sm hidden md:block border-b border-gray-200">
+    <header class="bg-white text-gray-600 py-3 text-sm hidden md:block border-b border-gray-100 shadow-sm">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center space-x-6">
                 <a href="mailto:info@website.com"
-                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    class="flex items-center gap-2 text-xs hover:text-primary-bit transition-colors">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                         <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
@@ -140,7 +148,7 @@
                     info@toxidotopup.com
                 </a>
                 <a href="tel:081234567890"
-                    class="flex items-center gap-2 hover:text-primary-bit transition-colors font-pixel text-[10px]">
+                    class="flex items-center gap-2 text-xs hover:text-primary-bit transition-colors">
                     <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                         <path
                             d="M2 3a1 1 0 011-1h2.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L6 7a1 1 0 01-1-1V5a1 1 0 00-1-1H3a1 1 0 00-1 1v12a1 1 0 001 1h2a1 1 0 001-1v-1a1 1 0 011-1h3.586a1 1 0 01.707.293l3.586 3.586a1 1 0 01-.707 1.707L16 19a1 1 0 01-1-1v-2a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 01-1 1H7a1 1 0 01-1-1v-2a1 1 0 00-1-1H3a1 1 0 00-1 1z"
@@ -149,45 +157,45 @@
                     0812-3456-7890
                 </a>
             </div>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
                 <a href="login.html"
-                    class="btn-8bit px-4 py-2 text-primary-bit font-pixel text-xs rounded-full hover:bg-gray-200 transition-all duration-300">Login</a>
+                    class="btn-simple px-4 py-2 text-primary-bit text-xs font-medium rounded-full bg-gray-100 hover:bg-gray-200 transition-all duration-300">Login</a>
                 <a href="register.html"
-                    class="btn-8bit px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
+                    class="btn-simple px-4 py-2 bg-primary-bit text-white text-xs font-medium rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300">Daftar</a>
             </div>
         </div>
     </header>
 
     <nav id="main-header"
-        class="bg-white/90 shadow-lg sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-300">
+        class="bg-white/90 shadow-md sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 hidden md:block border-b border-gray-200">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-pixel text-primary-bit tracking-wider">
+            <a href="#" class="text-3xl font-bold text-primary-bit tracking-tight">
                 <img src="image/logo.png" alt="" width="100">
             </a>
             <div class="flex items-center space-x-8">
                 <a href="index.html"
-                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    class="relative nav-link text-gray-700 text-sm font-medium hover:text-primary-bit transition-colors duration-300 group">
                     Top-up
                     <span
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        class="absolute left-0 bottom-[-4px] w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a href="transaction-check.html"
-                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    class="relative nav-link text-gray-700 text-sm font-medium hover:text-primary-bit transition-colors duration-300 group">
                     Transaksi
                     <span
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        class="absolute left-0 bottom-[-4px] w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a href="leaderboard.html"
-                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    class="relative nav-link text-gray-700 text-sm font-medium hover:text-primary-bit transition-colors duration-300 group">
                     Leaderboard
                     <span
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        class="absolute left-0 bottom-[-4px] w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
                 <a href="blog.html"
-                    class="relative nav-link text-gray-700 font-pixel text-xs hover:text-primary-bit transition-colors duration-300 group">
+                    class="relative nav-link text-gray-700 text-sm font-medium hover:text-primary-bit transition-colors duration-300 group">
                     Blog
                     <span
-                        class="absolute left-0 bottom-0 w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                        class="absolute left-0 bottom-[-4px] w-full h-0.5 bg-primary-bit scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                 </a>
             </div>
         </div>
@@ -195,28 +203,28 @@
 
     <div class="container mx-auto px-4 py-8 pt-20 md:pt-8">
         
-        <div class="mb-6 p-4 bg-white bit-box border-4 border-gray-900">
+        <div class="mb-6 p-4 bg-white simple-box">
             <div class="flex items-center space-x-4">
-                <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png" alt="Mobile Legends Logo" class="w-16 h-16 object-contain border-2 border-gray-900 bg-secondary-bit/20">
+                <img src="https://static.wikia.nocookie.net/mobile-legends/images/f/fb/MLBB_icon.png" alt="Mobile Legends Logo" class="w-16 h-16 object-contain rounded-lg border border-gray-300 bg-secondary-bit/20">
                 <div>
-                    <h1 class="text-2xl font-pixel text-gray-900">MOBILE LEGENDS</h1>
-                    <p class="text-sm font-pixel text-primary-bit">TOP UP DIAMOND RESMI</p>
+                    <h1 class="text-2xl font-bold text-gray-900">MOBILE LEGENDS</h1>
+                    <p class="text-sm font-medium text-primary-bit">TOP UP DIAMOND RESMI</p>
                 </div>
             </div>
         </div>
 
         <section class="mb-8 grid grid-cols-3 gap-4">
-            <div class="p-3 bg-white bit-box text-center">
+            <div class="p-3 bg-white simple-box text-center">
                 <svg class="w-8 h-8 mx-auto text-primary-bit mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                <p class="text-[8px] font-pixel text-gray-900">PROSES CEPAT</p>
+                <p class="text-xs font-medium text-gray-900">PROSES CEPAT</p>
             </div>
-            <div class="p-3 bg-white bit-box text-center">
+            <div class="p-3 bg-white simple-box text-center">
                 <svg class="w-8 h-8 mx-auto text-primary-bit mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 4v-4z"></path></svg>
-                <p class="text-[8px] font-pixel text-gray-900">CHAT 24/7</p>
+                <p class="text-xs font-medium text-gray-900">CHAT 24/7</p>
             </div>
-            <div class="p-3 bg-white bit-box text-center">
+            <div class="p-3 bg-white simple-box text-center">
                 <svg class="w-8 h-8 mx-auto text-primary-bit mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-2-6V9m4 0v3m-4 0v3m4-3v3M10 5l4-2 4 2v6l-4 3-4-3V5zm0 0l-4 2-4-2v6l4 3 4-3V5z"></path></svg>
-                <p class="text-[8px] font-pixel text-gray-900">BAYAR AMAN</p>
+                <p class="text-xs font-medium text-gray-900">BAYAR AMAN</p>
             </div>
         </section>
 
@@ -224,108 +232,108 @@
             
             <div class="lg:col-span-2 space-y-8">
                 
-                <section class="p-6 bg-white bit-box">
-                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
-                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">1</span> 
+                <section class="p-6 bg-white simple-box">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number-simple">1</span> 
                         MASUKKAN ID AKUN
                     </h2>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                            <label for="user-id" class="block text-sm font-pixel text-gray-700 mb-2">USER ID</label>
+                            <label for="user-id" class="block text-sm font-medium text-gray-700 mb-2">USER ID</label>
                             <input type="text" id="user-id" name="user-id" placeholder="Contoh: 12345678" required
-                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                class="input-simple w-full px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none text-sm">
                         </div>
                         <div>
-                            <label for="server-id" class="block text-sm font-pixel text-gray-700 mb-2">SERVER ID</label>
+                            <label for="server-id" class="block text-sm font-medium text-gray-700 mb-2">SERVER ID</label>
                             <input type="text" id="server-id" name="server-id" placeholder="Contoh: 8765" required
-                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                class="input-simple w-full px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none text-sm">
                         </div>
                     </div>
-                    <p class="text-[10px] text-gray-500 mt-4 font-pixel">ID berada di samping nickname Anda. Contoh: 12345678 (8765).</p>
+                    <p class="text-xs text-gray-500 mt-4 font-normal">ID berada di samping nickname Anda. Contoh: 12345678 (8765).</p>
                 </section>
 
-                <section class="p-6 bg-white bit-box">
-                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
-                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">2</span> 
+                <section class="p-6 bg-white simple-box">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number-simple">2</span> 
                         PILIH JUMLAH DIAMOND
                     </h2>
                     
                     <div id="nominal-options" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        <div class="option-card p-3 bg-gray-100" data-nominal="11">
-                            <span class="text-secondary-bit font-pixel text-xs block mb-1">11 DIAMOND</span>
+                        <div class="option-card p-4 text-center" data-nominal="11">
+                            <span class="text-secondary-bit font-semibold text-sm block mb-1">11 DIAMOND</span>
                             <span class="text-xs text-gray-500 line-through block">Rp 3.500</span>
-                            <span class="text-sm font-pixel text-green-700 block">RP 3.000</span>
+                            <span class="text-base font-bold text-green-700 block">RP 3.000</span>
                         </div>
-                        <div class="option-card active p-3 bg-secondary-bit" data-nominal="59">
-                            <span class="text-gray-900 font-pixel text-xs block mb-1">59 DIAMOND</span>
-                            <span class="text-sm font-pixel text-gray-900 block">RP 15.000</span>
+                        <div class="option-card active p-4 text-center" data-nominal="59">
+                            <span class="text-primary-bit font-semibold text-sm block mb-1">59 DIAMOND</span>
+                            <span class="text-base font-bold text-gray-900 block">RP 15.000</span>
                         </div>
-                        <div class="option-card p-3 bg-gray-100" data-nominal="112">
-                            <span class="text-primary-bit font-pixel text-xs block mb-1">112 DIAMOND</span>
-                            <span class="text-sm font-pixel text-gray-900 block">RP 30.000</span>
+                        <div class="option-card p-4 text-center" data-nominal="112">
+                            <span class="text-primary-bit font-semibold text-sm block mb-1">112 DIAMOND</span>
+                            <span class="text-base font-bold text-gray-900 block">RP 30.000</span>
                         </div>
-                        <div class="option-card p-3 bg-gray-100" data-nominal="257">
-                            <span class="text-primary-bit font-pixel text-xs block mb-1">257 DIAMOND</span>
-                            <span class="text-sm font-pixel text-gray-900 block">RP 70.000</span>
+                        <div class="option-card p-4 text-center" data-nominal="257">
+                            <span class="text-primary-bit font-semibold text-sm block mb-1">257 DIAMOND</span>
+                            <span class="text-base font-bold text-gray-900 block">RP 70.000</span>
                         </div>
-                        <div class="option-card p-3 bg-gray-100" data-nominal="568">
-                            <span class="text-primary-bit font-pixel text-xs block mb-1">568 DIAMOND</span>
-                            <span class="text-sm font-pixel text-gray-900 block">RP 150.000</span>
+                        <div class="option-card p-4 text-center" data-nominal="568">
+                            <span class="text-primary-bit font-semibold text-sm block mb-1">568 DIAMOND</span>
+                            <span class="text-base font-bold text-gray-900 block">RP 150.000</span>
                         </div>
-                        <div class="option-card p-3 bg-gray-100" data-nominal="1150">
-                            <span class="text-primary-bit font-pixel text-xs block mb-1">1150 DIAMOND</span>
-                            <span class="text-sm font-pixel text-gray-900 block">RP 300.000</span>
+                        <div class="option-card p-4 text-center" data-nominal="1150">
+                            <span class="text-primary-bit font-semibold text-sm block mb-1">1150 DIAMOND</span>
+                            <span class="text-base font-bold text-gray-900 block">RP 300.000</span>
                         </div>
                     </div>
                 </section>
                 
-                <section class="p-6 bg-white bit-box">
-                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
-                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">3</span> 
+                <section class="p-6 bg-white simple-box">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number-simple">3</span> 
                         PILIH PEMBAYARAN
                     </h2>
                     
                     <div id="payment-options" class="space-y-4">
-                        <label class="option-card active flex items-center p-3 bg-secondary-bit">
+                        <label class="option-card active flex items-center p-4">
                             <input type="radio" name="payment" value="qris" class="hidden" checked>
-                            <img src="https://via.placeholder.com/32/e5b701/000000?text=QR" alt="QRIS" class="w-8 h-8 mr-3 border-2 border-gray-900">
-                            <span class="font-pixel text-xs flex-grow">QRIS (OTOMATIS)</span>
-                            <span class="text-sm font-pixel">RP 15.200</span>
+                            <img src="https://via.placeholder.com/32/e5b701/000000?text=QR" alt="QRIS" class="w-8 h-8 mr-3 rounded-md shadow-sm">
+                            <span class="text-sm font-semibold flex-grow">QRIS (OTOMATIS)</span>
+                            <span class="text-base font-bold text-gray-900">RP 15.200</span>
                         </label>
-                        <label class="option-card flex items-center p-3 bg-gray-100">
+                        <label class="option-card flex items-center p-4">
                             <input type="radio" name="payment" value="dana" class="hidden">
-                            <img src="https://via.placeholder.com/32/01a8f7/ffffff?text=DANA" alt="DANA" class="w-8 h-8 mr-3 border-2 border-gray-900">
-                            <span class="font-pixel text-xs flex-grow">DANA</span>
-                            <span class="text-sm font-pixel">RP 15.300</span>
+                             <img src="https://via.placeholder.com/32/01a8f7/ffffff?text=DANA" alt="DANA" class="w-8 h-8 mr-3 rounded-md shadow-sm">
+                            <span class="text-sm font-medium flex-grow">DANA</span>
+                            <span class="text-base font-bold text-gray-900">RP 15.300</span>
                         </label>
-                        <label class="option-card flex items-center p-3 bg-gray-100">
+                        <label class="option-card flex items-center p-4">
                             <input type="radio" name="payment" value="bca" class="hidden">
-                            <img src="https://via.placeholder.com/32/01a8f7/ffffff?text=BCA" alt="Bank Transfer" class="w-8 h-8 mr-3 border-2 border-gray-900">
-                            <span class="font-pixel text-xs flex-grow">BANK BCA</span>
-                            <span class="text-sm font-pixel">RP 15.500</span>
+                             <img src="https://via.placeholder.com/32/01a8f7/ffffff?text=BCA" alt="Bank Transfer" class="w-8 h-8 mr-3 rounded-md shadow-sm">
+                            <span class="text-sm font-medium flex-grow">BANK BCA</span>
+                            <span class="text-base font-bold text-gray-900">RP 15.500</span>
                         </label>
                     </div>
                 </section>
 
-                <section class="p-6 bg-white bit-box">
-                    <h2 class="text-xl font-pixel text-gray-900 mb-6 flex items-center">
-                        <span class="rank-number flex items-center justify-center w-6 h-6 mr-3 text-xs font-bold rounded-full bg-primary-bit text-white border-2 border-gray-900">4</span> 
+                <section class="p-6 bg-white simple-box">
+                    <h2 class="text-xl font-bold text-gray-900 mb-6 flex items-center">
+                        <span class="rank-number-simple">4</span> 
                         KONTAK & PROMO
                     </h2>
                     
                     <div class="space-y-4">
                         <div>
-                            <label for="contact" class="block text-sm font-pixel text-gray-700 mb-2">EMAIL / WA</label>
+                            <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">EMAIL / WA</label>
                             <input type="text" id="contact" name="contact" placeholder="Email untuk notifikasi" required
-                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs">
+                                class="input-simple w-full px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none text-sm">
                         </div>
                         
                         <div class="relative">
-                            <label for="promo" class="block text-sm font-pixel text-gray-700 mb-2">KODE PROMO (OPSIONAL)</label>
+                            <label for="promo" class="block text-sm font-medium text-gray-700 mb-2">KODE PROMO (OPSIONAL)</label>
                             <input type="text" id="promo" name="promo" placeholder="Masukkan kode diskon"
-                                class="input-8bit w-full px-4 py-3 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 ring-primary-bit font-pixel text-xs pr-20">
-                            <button type="button" class="btn-8bit absolute top-[36px] right-0 px-3 py-1 bg-secondary-bit text-gray-900 font-pixel text-[10px] rounded-sm">
+                                class="input-simple w-full px-4 py-3 text-gray-900 placeholder-gray-500 focus:outline-none text-sm pr-20">
+                            <button type="button" class="btn-simple absolute top-[36px] right-1 px-3 py-1 bg-secondary-bit text-gray-900 font-medium text-xs rounded-lg shadow-md">
                                 PAKAI
                             </button>
                         </div>
@@ -335,31 +343,31 @@
             </div>
             
             <div class="lg:col-span-1 space-y-8">
-                 <section class="p-6 bg-secondary-bit bit-box lg:sticky lg:top-4 hidden md:block">
-                    <h2 class="text-xl font-pixel text-gray-900 mb-4">RINGKASAN</h2>
+                 <section class="p-6 bg-white simple-box lg:sticky lg:top-4">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 border-b pb-2 border-gray-200">RINGKASAN</h2>
                     
-                    <div class="space-y-3 border-t-2 border-b-2 border-gray-900 py-4 text-sm font-pixel">
+                    <div class="space-y-3 py-4 text-sm font-medium">
                         <div class="flex justify-between">
-                            <span class="text-gray-700">Produk:</span> <span id="summary-product-desktop">59 Diamond</span>
+                            <span class="text-gray-600">Produk:</span> <span id="summary-product-desktop" class="font-semibold">59 Diamond</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-700">Harga:</span> <span id="summary-price-desktop">Rp 15.000</span>
+                            <span class="text-gray-600">Harga:</span> <span id="summary-price-desktop">Rp 15.000</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-700">Biaya Admin:</span> <span id="summary-admin-fee-desktop">Rp 200</span>
+                            <span class="text-gray-600">Biaya Admin:</span> <span id="summary-admin-fee-desktop">Rp 200</span>
                         </div>
                         <div class="flex justify-between">
-                            <span class="text-gray-700">Diskon Promo:</span> <span id="summary-discount-desktop" class="text-red-600">- Rp 0</span>
+                            <span class="text-gray-600">Diskon Promo:</span> <span id="summary-discount-desktop" class="text-red-600">- Rp 0</span>
                         </div>
                     </div>
                     
-                    <div class="flex justify-between mt-4 text-lg font-pixel">
+                    <div class="flex justify-between mt-4 text-lg font-bold border-t pt-4 border-gray-200">
                         <span>TOTAL BAYAR:</span>
                         <span id="total-price-desktop" class="text-primary-bit">RP 15.200</span>
                     </div>
 
                     <button type="submit"
-                        class="btn-8bit w-full px-6 py-4 bg-primary-bit text-white font-pixel text-sm rounded-full hover:bg-opacity-90 shadow-primary-bit transition-all duration-300 mt-6">
+                        class="btn-simple w-full px-6 py-3 bg-primary-bit text-white text-sm font-bold rounded-lg hover:bg-opacity-90 shadow-primary-bit transition-all duration-300 mt-6">
                         BELI SEKARANG!
                     </button>
                 </section>
@@ -368,55 +376,55 @@
         </form>
 
         <section class="mt-12">
-            <h2 class="text-2xl font-pixel text-gray-900 mb-6 flex items-center border-b-4 border-secondary-bit pb-2">
-                <svg class="w-8 h-8 mr-2 text-secondary-bit" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.817 2.046a1 1 0 00-.363 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.817-2.046a1 1 0 00-1.175 0l-2.817 2.046c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.817-2.046c-.784-.57-.382-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center border-b-2 border-secondary-bit pb-2">
+                <svg class="w-7 h-7 mr-2 text-secondary-bit" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.817 2.046a1 1 0 00-.363 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.817-2.046a1 1 0 00-1.175 0l-2.817 2.046c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.817-2.046c-.784-.57-.382-1.81.588-1.81h3.462a1 1 0 00.95-.69l1.07-3.292z"></path></svg>
                 ULASAN & RATING
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="p-6 bit-box text-center">
-                    <p class="text-5xl font-pixel text-primary-bit">4.8</p>
+                <div class="p-6 bg-white simple-box text-center">
+                    <p class="text-5xl font-bold text-primary-bit">4.8</p>
                     <div class="mt-2 mb-3">
                         <span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span>
                     </div>
-                    <p class="text-sm font-pixel text-gray-700">(256 ULASAN)</p>
+                    <p class="text-sm font-medium text-gray-700">(256 ULASAN)</p>
                 </div>
                 
                 <div class="md:col-span-2 space-y-4">
                     <div class="p-4 review-card">
                         <div class="flex justify-between items-center mb-1">
-                            <span class="font-pixel text-[10px] text-gray-900">Player***789</span>
+                            <span class="font-semibold text-sm text-gray-900">Player***789</span>
                             <div class="text-xs">
                                 <span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span>
                             </div>
                         </div>
                         <p class="text-sm text-gray-700">Prosesnya cepat banget, di bawah 1 menit udah masuk diamond-nya! Recommended!</p>
-                        <span class="block text-[8px] text-gray-500 mt-2">24 Oktober 2025</span>
+                        <span class="block text-xs text-gray-500 mt-2">24 Oktober 2025</span>
                     </div>
                     
                     <div class="p-4 review-card">
                         <div class="flex justify-between items-center mb-1">
-                            <span class="font-pixel text-[10px] text-gray-900">Budi_Gamer</span>
+                            <span class="font-semibold text-sm text-gray-900">Budi_Gamer</span>
                             <div class="text-xs">
                                 <span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span><span class="rating-star">★</span>
                             </div>
                         </div>
                         <p class="text-sm text-gray-700">Harga oke, tapi tadi sempat pending 5 menit. Tapi akhirnya masuk juga.</p>
-                        <span class="block text-[8px] text-gray-500 mt-2">23 Oktober 2025</span>
+                        <span class="block text-xs text-gray-500 mt-2">23 Oktober 2025</span>
                     </div>
 
-                    <a href="#" class="inline-block font-pixel text-xs text-primary-bit hover:text-secondary-bit mt-4">LIHAT SEMUA ULASAN &gt;&gt;</a>
+                    <a href="#" class="inline-block font-medium text-sm text-primary-bit hover:text-secondary-bit mt-4">LIHAT SEMUA ULASAN &gt;&gt;</a>
                 </div>
             </div>
         </section>
         
-        <section class="mt-12 p-6 bg-white bit-box">
-            <h2 class="text-2xl font-pixel text-gray-900 mb-6 flex items-center border-b-4 border-secondary-bit pb-2">
-                 <svg class="w-8 h-8 mr-2 text-secondary-bit" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+        <section class="mt-12 p-6 bg-white simple-box">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center border-b-2 border-secondary-bit pb-2">
+                 <svg class="w-7 h-7 mr-2 text-secondary-bit" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
                 BUTUH BANTUAN?
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div>
-                    <h3 class="font-pixel text-primary-bit text-xs mb-2">PERTANYAAN UMUM:</h3>
+                    <h3 class="font-bold text-primary-bit text-xs mb-2">PERTANYAAN UMUM:</h3>
                     <ul class="space-y-2 text-gray-700">
                         <li><a href="#" class="hover:text-primary-bit">Bagaimana cara cek ID game saya?</a></li>
                         <li><a href="#" class="hover:text-primary-bit">Berapa lama proses top-up?</a></li>
@@ -424,9 +432,9 @@
                     </ul>
                 </div>
                 <div class="border-t pt-4 md:border-t-0 md:pt-0">
-                    <h3 class="font-pixel text-primary-bit text-xs mb-2">HUBUNGI KAMI:</h3>
-                    <p class="text-sm font-pixel text-gray-700">LAYANAN PELANGGAN 24/7</p>
-                    <a href="https://wa.me/6281234567890" target="_blank" class="btn-8bit inline-flex items-center px-4 py-2 mt-3 bg-green-500 text-white font-pixel text-xs hover:bg-green-600">
+                    <h3 class="font-bold text-primary-bit text-xs mb-2">HUBUNGI KAMI:</h3>
+                    <p class="text-sm font-medium text-gray-700">LAYANAN PELANGGAN 24/7</p>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="btn-simple inline-flex items-center px-4 py-2 mt-3 bg-green-500 text-white text-xs font-medium hover:bg-green-600 rounded-lg shadow-md">
                         <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M12.039 2c-5.58 0-10.11 4.53-10.11 10.11s4.53 10.11 10.11 10.11c5.58 0 10.11-4.53 10.11-10.11s-4.53-10.11-10.11-10.11zm-1.84 14.86c-.1.35-.38.56-.73.56-.35 0-.6-.18-.7-.47l-1.34-4.22c-.1-.38 0-.66.27-.85.27-.19.64-.17.9-.06l.24.1c.3.1.58.15.86.15.3 0 .52-.08.68-.22.16-.14.24-.3.24-.5 0-.25-.09-.45-.26-.6-.17-.15-.41-.24-.7-.24-.22 0-.4.04-.54.1l-.8.36c-.1.04-.2.06-.3.06-.05 0-.1 0-.16-.02l-.12-.04c-.35-.12-.54-.36-.58-.72-.04-.36.14-.6.44-.78l3.18-1.5c.3-.15.54-.22.75-.22.14 0 .3.04.47.12.18.08.3.2.37.34.07.13.07.28 0 .45-.1.3-.26.4-.5.4-.17 0-.32-.04-.47-.13l-3.26 1.54c-.1.04-.2.06-.3.06-.06 0-.12-.02-.18-.04l.7 2.1c.1.32.22.46.36.46.12 0 .26-.06.4-.18l.8-.36c.1-.04.2-.06.3-.06.05 0 .1 0 .16.02l.12.04c.35.12.54.36.58.72.04.36-.14.6-.44.78l-3.18 1.5z"/></svg>
                         WHATSAPP CHAT
                     </a>
@@ -436,27 +444,27 @@
         
     </div>
 
-    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-900 shadow-xl md:hidden z-50 h-16">
+    <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-xl md:hidden z-50 h-16">
         <nav class="flex justify-around items-center h-full text-gray-700">
             <div class="flex flex-col items-start justify-center p-2">
-                <span class="text-xs font-pixel text-gray-600">TOTAL:</span>
-                <span id="total-price-mobile" class="text-sm font-pixel text-primary-bit">RP 15.200</span>
+                <span class="text-xs font-medium text-gray-600">TOTAL:</span>
+                <span id="total-price-mobile" class="text-base font-bold text-primary-bit">RP 15.200</span>
             </div>
              <button type="submit" form="topup-form"
-                class="btn-8bit flex-grow mx-4 px-4 py-2 bg-primary-bit text-white font-pixel text-xs rounded-full hover:bg-opacity-90 transition-all duration-300">
+                class="btn-simple flex-grow mx-4 px-4 py-3 bg-primary-bit text-white text-sm font-bold rounded-lg hover:bg-opacity-90 transition-all duration-300">
                 BELI SEKARANG
             </button>
         </nav>
     </div>
 
-    <footer class="bg-white text-gray-700 py-6 mt-12 border-t border-gray-900 hidden md:block">
-        <div class="container mx-auto px-4 text-center text-xs text-gray-500 font-pixel">
+    <footer class="bg-white text-gray-600 py-6 mt-12 border-t border-gray-200 hidden md:block">
+        <div class="container mx-auto px-4 text-center text-xs text-gray-500 font-medium">
             © 2025 TXD TOPUP. FAST & RELIABLE.
         </div>
     </footer>
 
     <script>
-        // --- Interaksi Frontend Sederhana ---
+        // --- Interaksi Frontend Sederhana (TIDAK DIUBAH FUNGSIONALITASNYA) ---
         
         const nominalOptions = document.querySelectorAll('#nominal-options .option-card');
         const paymentOptions = document.querySelectorAll('#payment-options input[type="radio"]');
@@ -473,40 +481,44 @@
                     // --- Nominal Logic ---
                     if (selector === nominalOptions) {
                         nominalOptions.forEach(c => c.classList.remove('active', 'bg-secondary-bit'));
-                        card.classList.add('active', 'bg-secondary-bit');
-                        nominalOptions.forEach(c => {
-                            if (!c.classList.contains('active')) {
-                                c.classList.add('bg-gray-100');
-                            } else {
-                                c.classList.remove('bg-gray-100');
-                            }
-                        });
+                        card.classList.add('active');
                     } 
                     // --- Payment Logic ---
                     else if (selector === paymentOptions) {
-                        document.querySelectorAll('#payment-options .option-card').forEach(label => label.classList.remove('active', 'bg-secondary-bit'));
+                        document.querySelectorAll('#payment-options .option-card').forEach(label => label.classList.remove('active'));
                         if (e.target.checked) {
-                            e.target.closest('.option-card').classList.add('active', 'bg-secondary-bit');
+                            e.target.closest('.option-card').classList.add('active');
                         }
-                        document.querySelectorAll('#payment-options .option-card').forEach(c => {
-                            if (!c.classList.contains('active')) {
-                                c.classList.add('bg-gray-100');
-                            } else {
-                                c.classList.remove('bg-gray-100');
-                            }
-                        });
                     }
 
                     updateSummary();
                 });
-
-                // Set initial background for inactive cards
-                if (!card.classList.contains('active')) {
-                    card.classList.add('bg-gray-100');
-                }
             });
         }
         
+        // Perluasan logika untuk inisiasi dan memastikan kelas aktif/default terpasang
+        function setupInitialState() {
+            // Nominal
+            nominalOptions.forEach(c => {
+                 if (c.classList.contains('active')) {
+                     c.classList.remove('bg-gray-100');
+                 } else {
+                     c.classList.add('bg-gray-100');
+                 }
+            });
+            
+            // Payment
+             document.querySelectorAll('#payment-options .option-card').forEach(c => {
+                 const input = c.querySelector('input');
+                 if (input && input.checked) {
+                     c.classList.add('active');
+                 } else {
+                     c.classList.add('bg-gray-100');
+                 }
+            });
+        }
+
+
         updateOptions(nominalOptions, 'click');
         updateOptions(paymentOptions, 'change');
 
@@ -520,8 +532,14 @@
             let basePrice = 15000; // Default price for 59 Diamond
             let nominalName = '59 Diamond';
             if (selectedNominalElement) {
-                const priceText = selectedNominalElement.querySelector('.text-sm').textContent;
-                basePrice = parseInt(priceText.replace('RP ', '').replace(/\./g, '').trim().replace(',', ''), 10);
+                // Mencari elemen harga tanpa coret (base price)
+                const priceElement = selectedNominalElement.querySelector('.text-base') || selectedNominalElement.querySelector('.text-sm:not(.line-through)');
+                if (priceElement) {
+                     basePrice = parseInt(priceElement.textContent.replace('RP ', '').replace(/\./g, '').trim().replace(',', ''), 10);
+                } else {
+                     // Fallback jika struktur harga berubah
+                     basePrice = 15000;
+                }
                 nominalName = selectedNominalElement.getAttribute('data-nominal') + ' Diamond';
             }
             
@@ -557,12 +575,19 @@
                 if (paymentType === 'dana') fee = 300;
                 else if (paymentType === 'bca') fee = 500;
 
-                label.querySelector('.text-sm').textContent = formatRupiah(basePrice + fee);
+                // Gunakan kelas yang benar untuk harga (teks terakhir)
+                const totalTextElement = label.querySelector('.text-base:last-child');
+                if (totalTextElement) {
+                    totalTextElement.textContent = formatRupiah(basePrice + fee);
+                }
             });
         }
 
-        // Jalankan update awal
-        document.addEventListener('DOMContentLoaded', updateSummary);
+        // Jalankan inisiasi dan update awal
+        document.addEventListener('DOMContentLoaded', () => {
+             setupInitialState();
+             updateSummary();
+        });
     </script>
 
 </body>
